@@ -1,8 +1,14 @@
 public class Produto {
 
-    static double custoEmbalagem;//está em italico pois é uma variavel estatica.
+    static double custoEmbalagem;//está em italico pois é uma variavel
+    // estatica.
+
     double precoCusto;
     double precoVenda;
+
+    void alterarCustoEmbalagem(double custoEmbalagem){
+        Produto.custoEmbalagem = custoEmbalagem;
+    }
 
     void alterarPrecoCusto (double precoCusto) {
         this.precoCusto = precoCusto;
