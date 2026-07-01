@@ -1,23 +1,23 @@
 public class Produto {
 
-    static double custoEmbalagem;//está em italico pois é uma variavel
-    // estatica.
+    static double custoEmbalagem;
 
     double precoCusto;
     double precoVenda;
+/*Por que this não funciona em metodo static? this aponta para o objeto
+que chamou o metodo. Mas metodo static é chamado pela classe
+(Produto.calcularCustosTotais(...)), sem nenhum objeto envolvido. Se não
+tem objeto, o this não tem nada para apontar — por isso o Java bloqueia.
+Solução: passar a instância como parâmetro (Produto produto)
+e acessar normalmente via produto.precoCusto.*/
+    static double calcularCustosTotais (Produto produto) {
+        return produto.precoCusto + Produto.custoEmbalagem;
+    }
 
     void alterarPrecoCusto (double precoCusto) {
         this.precoCusto = precoCusto;
     }
-/*Foram alterados os metodos abaixo para metodos estaticos, pois eles não
-precisam da instancia de produto e esses metodos são ótimos candidatos para
-isso pois eles só alteram a variavels estatica custo.Embalagem e por ser uma
-boa pratica, alem de não fazer sentido ter uma instacia de produto para
-alterar o custo.Embalagem sendo que o custoEmbalagem não é da instancia e
-sim da classe Produto. E isso pode acabar enganando e desse jeito fica
-explicito e legivel nas linhas.
-Produto.alterarCustoEmbalagem(12);
-Produto.imprimirCustoEmbalagem();*/
+
     static void alterarCustoEmbalagem(double custoEmbalagem){
         Produto.custoEmbalagem = custoEmbalagem;
     }
